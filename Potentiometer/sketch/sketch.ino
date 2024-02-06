@@ -31,7 +31,7 @@ Control_Led(knobValue);
 //Turn on at Potentiometer value of 400
 void Control_Led(int val)
 {
-  brightness = ((val-400)/5);
+  brightness = ((val-400)/3);
   if(val >= 400)
   {
     turnOn_led(brightness);
@@ -54,4 +54,3 @@ void turnOff_led()
 {
     analogWrite(LED, 0);   // turn the LED off by making the voltage LOW
 }//end turnOff_led
-
