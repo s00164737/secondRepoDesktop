@@ -1,6 +1,6 @@
-
 //Custom variables
- int LED=analogRead((A3));      //initialize variable for LED to correspond with Digital Port 1
+ int LED=3;      //initialize variable for LED to correspond with Digital Port 1
+ int brightness = 0;
 
 
 // the setup routine runs once when you press reset:
@@ -15,6 +15,7 @@ void setup() {
 // the loop routine runs over and over again forever:
 void loop() {
   // read the input on analog pin 0:
+  //Max 1023
   int knobValue = analogRead(A0);
 
    // print out the value you read:
@@ -25,13 +26,16 @@ Control_Led(knobValue);
 
 }//end loop
 
-//Method that controls the LED
+//Method that controls the LED brightness depending on Potentiometer
+//Brightness Min 0 Max 255
+//Turn on at Potentiometer value of 400
 void Control_Led(int val)
 {
-  int brightness = val/10;
+  brightness = ((val-400)/5);
   if(val >= 400)
   {
     turnOn_led(brightness);
+    delay(30);
   }
   else
   {
@@ -50,5 +54,4 @@ void turnOff_led()
 {
     analogWrite(LED, 0);   // turn the LED off by making the voltage LOW
 }//end turnOff_led
-
 
